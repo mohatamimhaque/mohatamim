@@ -14,8 +14,9 @@ html{
     -ms-scroll-limit-x-min: 500px;
 }
 :root{
-   --color:#485461;
-   --nav:rgb(111, 109, 247);
+   --color:#a0a5a4;
+   --nav:rgb(202, 115, 253);
+   --btn:rgba(173, 242, 252, 0.4);
 }
 body{
     background-color: var(--color);
@@ -30,11 +31,12 @@ nav.stiky{
     z-index:100;
     width:100%;
     height:8vh;
-    background-color: rgb(169, 249, 255);
+    background-color: rgb(255, 255, 255,0.1);
     bottom:0;
     padding:-5px;
     transition:1s;
-    box-shadow:0 0 5px rgb(169, 249, 255);
+    box-shadow:0 0 1px grey;
+    backdrop-filter:blur(25px);
 
 }
 nav.stiky .logo{
@@ -198,52 +200,34 @@ header{
         background-position: 2000px 0;
     }
 }
-.inner h3{
-    font-size: 25px;
-    letter-spacing:1px;
+
+
+
+.animate-text .txt-rotate{
+    color:rgb(253, 153, 107);
     word-spacing: 5px;
-    overflow:hidden;
-}
-.inner h3:before{
-    content:'';
-    position:absolute;
-    left:0%;
-    width:120%;
-    height:20%;
-    background:transparent;
-    animation:animate 10s linear forwards;
-}
-@keyframes animate{
-    0%{
-        left:-20%;
-    }
-    50%{
-        left:120%;
-    }
-    100%{
-        left:-20%;
-    }
+    margin-left:5px;
 }
 .btn{
     position: relative;
     display: inline-block;
     padding:0.6rem 1.8rem;
-    border:2px solid #1179e7;
+    border:2px solid var(--btn);
     border-radius:25px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 600;;
     text-transform: uppercase;
     cursor:pointer;
     text-decoration: none;
     margin-top: 1.5rem;
     color:#fff;
+    backdrop-filter: blur(25px);
 }
 .btn:hover{
-    transition-delay:1s;
-    box-shadow:0 0 5px #1179e7,
-               0 0 10px #1179e7,
-               0 0 20px #1179e7,
-               0 0 40px #1179e7;
+    transition-delay:.5s;
+    box-shadow:0 0 5px var(--btn),
+               0 0 10px var(--btn),
+               0 0 20px var(--btn),
+               0 0 40px var(--btn);
 }
 .btn span{
     position:relative;
@@ -256,21 +240,21 @@ header{
     top:50%;
     transform: translateY(-50%);
     width:20px;
-    height:2px;
-    background-color:#1179e7;
-    box-shadow:5px -8px 0 #1179e7,
-               5px 8px 0 #1179e7;
+    height:0px;
+    background-color:var(--btn);
+    box-shadow:5px -8px 0 var(--btn),
+               5px 8px 0 var(--btn);
     transition:width 0.5s,left 0.5s, height 0.5s, box-shadow 0.5s;
     transition-delay: 1s,0.5s,0s,0s;
 }
 .btn:hover::before{
     width:60%;
-    height:100%;
+    height:110%;
     left:-2px;
     border-radius: 25px;
-    box-shadow:5px 0 0 #1179e7,
-               5px 0 0 #1179e7;
-    transition-delay:0s,0.5s,1s,1s;
+    box-shadow:5px 0 0 var(--btn),
+               5px 0 0 var(--btn);
+    transition-delay:0s,0.25s,.5s,.5s;
     color:white;
 }
 .btn::after{
@@ -280,21 +264,21 @@ header{
     top:50%;
     transform: translateY(-50%);
     width:20px;
-    height:2px;
-    background-color:#1179e7;
-    box-shadow:-5px -8px 0 #1179e7,
-               -5px 8px 0 #1179e7;
+    height:0px;
+    background-color:var(--btn);
+    box-shadow:-5px -8px 0 var(--btn),
+               -5px 8px 0 var(--btn);
    transition:width 0.5s,left 0.5s, height 0.5s, box-shadow 0.5s;
    transition-delay: 1s,0.5s,0s,0s;
 }
 .btn:hover::after{
     width:60%;
-    height:100%;
+    height:110%;
     right:-2px;
     border-radius: 25px;
-    box-shadow:-5px 0 0 #1179e7,
-               -5px 0 0 #1179e7;
-    transition-delay:0s,0.5s,1s,1s;
+    box-shadow:-5px 0 0 var(--btn),
+               -5px 0 0 var(--btn);
+    transition-delay:0s,0.25s,.5s,.5s;
     color:white;
 }
 
@@ -470,8 +454,7 @@ ul{
 
 }
 .service .service-box{
-    padding-left:2%;
-    padding-right:2%;
+    padding-left:4%;
     padding-top:20px ;
     display:grid;
     grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
@@ -539,7 +522,7 @@ ul{
     margin:10px auto 20px;
 }
 .service p{
-    font-size: 13.5px;
+    font-size: 13px;
     justify-content: center;
 }
 
@@ -628,7 +611,6 @@ ul{
 .work h2{
     color: var(--color);
     text-align: center;
-    padding-top:20px;
     font-size:30px;
     text-transform: uppercase;
     -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#0004);
@@ -638,7 +620,7 @@ ul{
     justify-content: center;
     align-items: center;
     display: flex;
-    margin-top: -50px;
+    margin-top: 100px;
 }
 
 .recent-work .box{
@@ -854,6 +836,7 @@ ul{
 
 
 .contact{
+    position: relative;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -882,11 +865,42 @@ ul{
     background:linear-gradient(#21f367,#83d8ff);
     border-radius: 50%;
     transform:translate(420px,150px);
-      backdrop-filter:blur(25px);
-      overflow: auto;
+    overflow: auto;
   
   }
-  .contact-container{
+.contact-shadow{
+     position:absolute;
+     width:70px;
+     height:70px;
+     border-radius: 50%;
+     background:linear-gradient(45deg,rgb(235, 133, 255),rgb(173, 211, 255));
+     z-index:49;
+     transform:translate(180px,-50px);
+
+  }
+.contact-shadow::after{
+    content:'';
+     position:absolute;
+     width:40px;
+     height:40px;
+     border-radius: 50%;
+     background:linear-gradient(30deg,rgb(179, 213, 253),rgb(160, 255, 160));
+     transform:translate(-300px,-40px);
+
+  }
+.contact-shadow::before{
+    content:'';
+     position:absolute;
+     width:45px;
+     height:45px;
+     border-radius: 50%;
+     background:linear-gradient(30deg,rgb(116, 77, 255),rgb(255, 162, 100));
+     transform:translate(-220px,160px);
+
+  }
+
+  
+.contact-container{
     position:relative;
     z-index:50;
     width:70%;
@@ -900,16 +914,17 @@ ul{
     overflow: hidden;
     backdrop-filter:blur(25px);
   }
-  .contact-container::before{
+  .contact-container::after{
     content:'';
     position:absolute;
-    top:40%;
-    left:-60%;
+    top:0;
+    right:-60%;
     width:100%;
-    height:100;
-    background:rgba(255,255,255,0.5);
+    height:100%;
+    background:rgba(255,255,255,0.05);
     pointer-events:none;
-    transform: skewX(-15deg);
+    transform: skewX(-20deg);
+    box-shadow: 0 0 25px rgba(255,255,255,0.05);
       
   }
   .contact h2{
@@ -995,8 +1010,6 @@ ul{
      color:var();
      font-size:15px;
   }
-
-
 
 
 
