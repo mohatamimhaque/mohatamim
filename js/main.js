@@ -1,3 +1,4 @@
+
 const hamburger_menu = document.querySelector(".hamburger-menu");
 const container = document.querySelector(".container");
 
@@ -11,6 +12,8 @@ hamburger_menu.addEventListener("click",() => {
 window.addEventListener("scroll",function(){
   var navbar = document.querySelector("nav");
   navbar.classList.toggle("stiky" ,document.body.scrollTop > 20 || document.documentElement.scrollTop > 20);
+  var navbar = document.querySelector(".progressbar");
+  navbar.classList.toggle("nav-progressbar" ,document.body.scrollTop > 20 || document.documentElement.scrollTop > 20);
 })
 
 
@@ -133,25 +136,7 @@ window.onload = function() {
 
 
 
-mybutton = document.getElementById("myBtn");
 
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
-}
-function myFunction(x) {
-  x.classList.toggle("change");
-}
 
 
 
@@ -169,4 +154,34 @@ function sendEmail(){
 }).then(
   message => alert("Message Sent Succesfully")
 );
+}
+
+
+
+
+
+
+let progress = document.getElementById('progressbar');
+let height = document.body.scrollHeight-window.innerHeight;
+
+mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction();
+  let progressHeight = (window.pageYOffset / height) * 100;
+  progress.style.height = progressHeight + "%";};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+function myFunction(x) {
+  x.classList.toggle("change");
 }
